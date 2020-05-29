@@ -1,0 +1,36 @@
+<!--
+  Generated template for the OtpsignupPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+</ion-header>
+
+<ion-content padding>
+
+  <div class="signUp"><p class="signUpDetail">Register</p></div>
+
+  <div class="otpValueSignUp">
+    Enter the 4-digit code we sent you to +1 <br>
+    (917)900-2123
+  </div>
+
+  <div  class="otpDataSignUp">
+
+    <ng-otp-input  (onInputChange)=" onOtpChange($event)" [config]="{length:4}"></ng-otp-input>
+
+  </div>
+
+  <div class="otpDataValueSignUp">
+    <div>
+      Resend code
+    </div>
+
+  </div>
+
+  <button ion-button class="button" (click)="users()">Next</button>
+
+
+</ion-content>

@@ -1,0 +1,75 @@
+page-login {
+
+  .login{
+
+    background:url("../../assets/imgs/198062 1.jpg") no-repeat center ;
+
+    background-size: cover;
+
+    background-color: transparent;
+
+
+
+    .logo{
+
+      position: absolute;
+      width: 189px;
+      height: 100px;
+      left: 93px;
+      top: 134px;
+    }
+
+
+  }
+
+
+  .button-welcome{
+
+position: relative;
+
+    height: 49px;
+    top: 0px;
+
+
+
+
+    background: rgba(235,12,109,0.3);
+
+    border-radius: 16px;
+
+  }
+
+  .button-bottum{
+    position: absolute;
+    height: 97px;
+    left: 0px;
+    right: 0px;
+    bottom: 34px;
+
+
+
+    background: #FFFFFF;
+
+
+    .button-text{
+      position: absolute;
+      width: 73px;
+      height: 19px;
+      left: calc(50% - 73px/2 - 107px);
+      top: calc(50% - 19px/2);
+
+      font-family: SF Pro Text;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 19px;
+
+      color: #FFFFFF;
+    }
+
+
+  }
+
+
+
+}

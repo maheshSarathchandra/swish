@@ -1,0 +1,156 @@
+page-completedata {
+
+
+  .signUp{
+
+    position:center;
+    width: 375px;
+    height: 44px;
+    left: 0px;
+    top: 44px;
+
+    background: #FFFFFF;
+
+    .signUpDetail{
+
+      position: absolute;
+      width: 66px;
+      height: 19px;
+      left: calc(50% - 66px/2 - 0.5px);
+      top: 12px;
+
+      font-family: SF Pro Text;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 19px;
+
+      color: #000000;
+
+    }
+  }
+
+  .completedata{
+
+    position: absolute;
+    height: 38px;
+    left: 24px;
+    right: 24px;
+    top: 134px;
+
+    font-family: SF Pro Text;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+
+
+
+    color: #000000;
+
+  }
+
+  .button_1{
+
+
+    top: 131px;
+
+
+
+    background: #F7F7F7;
+    border-radius: 8px;
+
+    .completedata_1{
+
+      position: absolute;
+      height: 17px;
+      left: 14px;
+      right: 14px;
+      top: calc(50% - 17px/2 + 0.5px);
+
+      font-family: SF Pro Text;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 17px;
+
+
+      text-align: center;
+
+
+
+      color: #000000;
+
+    }
+  }
+
+  .button_2{
+
+
+    top: 141px;
+
+
+
+    background: #F7F7F7;
+    border-radius: 8px;
+
+    .completedata_2{
+
+      position: absolute;
+      height: 17px;
+      left: 14px;
+      right: 14px;
+      top: calc(50% - 17px/2 + 0.5px);
+
+      font-family: SF Pro Text;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 17px;
+
+
+      text-align: center;
+
+
+
+      color: #000000;
+
+    }
+
+  }
+
+
+
+
+  .accept{
+
+
+
+    top: 63%;
+
+
+
+    background: #EB0C6D;
+    border-radius: 8px;
+
+
+  }
+
+  .acceptdata{
+
+    position: absolute;
+    width: 57px;
+    height: 19px;
+    left: calc(50% - 57px/2 - 115px);
+    top: calc(50% - 19px/2);
+
+    font-family: SF Pro Text;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+    color: #FFFFFF;
+
+  }
+
+}

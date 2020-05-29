@@ -1,0 +1,98 @@
+page-signup {
+
+  .signUp{
+
+    position: center;
+    width: 375px;
+    height: 44px;
+    left: 0px;
+    top: 44px;
+
+    background: #FFFFFF;
+
+   .signUpDetail{
+
+    position: absolute;
+     width: 66px;
+     height: 19px;
+     left: calc(50% - 66px/2 - 0.5px);
+     top: 12px;
+
+     font-family: SF Pro Text;
+     font-style: normal;
+     font-weight: 600;
+     font-size: 16px;
+     line-height: 19px;
+
+     color: #000000;
+
+   }
+  }
+
+
+.signUpFormData{
+
+
+
+  height: 542px;
+  left: 0px;
+  top: 160px;
+
+  background: #FFFFFF;
+}
+
+.rounded{
+
+  position: relative;
+
+  background: #F7F7F7;
+  border-radius: 8px;
+}
+  .firstName{
+position: absolute;
+    height: 17px;
+    left: 24px;
+    right: 24px;
+
+
+    font-family: SF Pro Text;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+
+
+
+    color: #000000;
+
+  }
+
+  .lastName{
+
+    position: absolute;
+    height: 17px;
+    left: 24px;
+    right: 24px;
+
+
+    font-family: SF Pro Text;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+
+    color: #000000;
+  }
+
+  .signUpButton{
+
+
+    top: 301px;
+
+
+
+    background: #EB0C6D;
+    border-radius: 8px;
+  }
+
+}

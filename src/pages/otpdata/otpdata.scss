@@ -1,0 +1,82 @@
+page-otpdata {
+
+  .welcome{
+
+    position: absolute;
+    width: 72px;
+    height: 19px;
+    left: calc(50% - 72px/2 - 0.5px);
+    top: 12px;
+
+    font-family: SF Pro Text;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+
+
+    text-align: center;
+
+
+
+    color: #000000;
+
+  }
+
+  .otpData{
+
+    position: absolute;
+    width: 224px;
+    height: 44px;
+    left: 24px;
+    top: 196px;
+
+
+
+  }
+
+  .otpValue{
+
+    position: absolute;
+    height: 38px;
+    left: 24px;
+    right: 24px;
+    top: 134px;
+
+    font-family: SF Pro Text;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+
+
+
+    color: #000000;
+  }
+
+  .otpDataValue{
+
+    position: absolute;
+    width: 327px;
+    height: 49px;
+    left: 24px;
+    top: 383px;
+
+
+    background: #FFFFFF;
+    border-radius: 8px;
+  }
+
+  .button_login_data_va{
+
+    position: absolute;
+    width: 327px;
+    height: 49px;
+    left: 24px;
+    top: 448px;
+
+
+    background: #EB0C6D;
+    border-radius: 8px;
+  }
+}

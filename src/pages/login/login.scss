@@ -1,12 +1,5 @@
 page-login {
 
-  .login{
-
-    background:url("../../assets/imgs/198062 1.jpg") no-repeat center ;
-
-    background-size: cover;
-
-    background-color: transparent;
 
 
 
@@ -20,22 +13,22 @@ page-login {
     }
 
 
-  }
+
 
 
   .button-welcome{
 
 position: relative;
 
-    height: 49px;
-    top: 0px;
+    height: 43px;
+    bottom: 0%;
 
 
 
 
-    background: rgba(235,12,109,0.3);
+    background: rgba(235,12,109,1);
 
-    border-radius: 16px;
+    border-radius: 8px;
 
   }
 
@@ -67,9 +60,20 @@ position: relative;
       color: #FFFFFF;
     }
 
-
   }
 
+  .footer-area{
 
+    position: absolute;
+    height: 58px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+
+
+
+    background: #FFFFFF;
+
+  }
 
 }

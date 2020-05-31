@@ -40,7 +40,7 @@ export class CompletedataPage {
 
 
 
-      if(data != null){
+      if(data !=null){
         this.presentToast();
       }
     });

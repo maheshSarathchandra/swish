@@ -68,9 +68,9 @@ export class SignupPage {
       console.log(this.userDto);
 
 
-      this.loginserviceProvider.userCreate(this.userDto).subscribe(data=>{
-        console.log(data);
-      });
+      // this.loginserviceProvider.userCreate(this.userDto).subscribe(data=>{
+      //   console.log(data);
+      // });
 
 
     this.navCtrl.setRoot(OtpsignupPage, {userData:this.userDto});

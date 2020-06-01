@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
 import {SignupPage} from "../signup/signup";
-import {OtpdataPage} from "../otpdata/otpdata";
 import {PasswordPage} from "../password/password";
 
 /**
@@ -18,9 +17,9 @@ import {PasswordPage} from "../password/password";
 })
 export class WelcomePage {
 
-  usernameData = {inputData:''}
+  usernameData = {inputData:''};
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public toastCrtl: ToastController) {
   }
 
   ionViewDidLoad() {
@@ -29,8 +28,39 @@ export class WelcomePage {
 
   login(){
 
-    console.log(this.usernameData.inputData);
-    this.navCtrl.setRoot(PasswordPage,{username:this.usernameData.inputData});
+    if(this.usernameData.inputData === ''){
+
+
+    }else {
+
+
+      let userPhoneNumber = /^\d+$/.test(this.usernameData.inputData);
+
+      if (userPhoneNumber) {
+
+        let p = this.usernameData.inputData.charAt(0);
+
+        let phoneNumberData;
+
+        if (p === "0") {
+          phoneNumberData = this.usernameData.inputData.substr(1);
+        } else {
+
+        }
+
+        let countryCode = "+94";
+        phoneNumberData = countryCode.concat(phoneNumberData);
+
+        console.log(this.usernameData.inputData);
+        this.navCtrl.setRoot(PasswordPage, {username: phoneNumberData});
+
+      } else {
+
+        console.log(this.usernameData.inputData);
+        this.navCtrl.setRoot(PasswordPage, {username: this.usernameData.inputData});
+      }
+
+    }
 
   }
 
@@ -40,4 +70,8 @@ export class WelcomePage {
     this.navCtrl.setRoot(SignupPage);
 
   }
+
+
+
+
 }

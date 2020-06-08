@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
+import {DashboardPage} from "../dashboard/dashboard";
+import {HomePage} from "../home/home";
+import {FavoritePage} from "../favorite/favorite";
+import {SelectPage} from "../select/select";
+import {SearchPage} from "../search/search";
+import {ProfilePage} from "../profile/profile";
 
 /**
  * Generated class for the AppearPage page.
@@ -15,11 +21,18 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class AppearPage {
 
+  tabRoot1 = DashboardPage;
+  tabRoot2 = FavoritePage;
+  tabRoot3 = SelectPage;
+  tabRoot4 = SearchPage;
+  tabRoot5 = ProfilePage;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AppearPage');
   }
+
+
 
 }

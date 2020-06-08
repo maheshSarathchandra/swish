@@ -1,0 +1,85 @@
+page-dashboard {
+
+
+
+
+.option-1{
+
+
+
+
+  width: 102px;
+  height: 33px;
+  left: calc(50% - 102px/2 - 116.5px);
+  top: 0px;
+
+  flex: none;
+  order: 0;
+  align-self: center;
+  margin: 12px 0px;
+
+  background: #393939;
+  border-radius: 17px;
+}
+
+.slider-button{
+
+  position: absolute;
+  left: 60%;
+  top: 60%;
+}
+
+  .slider{
+
+    max-width: 100%;
+  }
+
+  .title-data{
+
+    position: relative;
+    height: 26px;
+    left: 16px;
+    right: 16px;
+    top: 32px;
+
+    font-family: SF Pro Text;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 26px;
+
+
+
+    color: #000000;
+  }
+
+  .image-container{
+
+    min-height:200px;
+    background-size:cover;
+
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+  }
+
+  .grid-data{
+
+    position: relative;
+    top: 24px;
+  left:0px;
+  }
+  
+ .create-slider{
+
+   max-width: 100%;
+ }
+
+  .searchbar{padding: 0px}
+
+}
+
+ion-toolbar.scrollable-segments{
+
+  background: #222;
+}

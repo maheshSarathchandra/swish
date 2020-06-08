@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
 import {LoginserviceProvider} from "../../providers/loginservice/loginservice";
+import {LocationPage} from "../location/location";
 
 /**
  * Generated class for the CompletedataPage page.
@@ -35,16 +36,17 @@ export class CompletedataPage {
 
     console.log("enter the data");
 
-    this.loginservice.userCreate(this.userValue).subscribe(data =>{
-      console.log(data);
+    // this.loginservice.userCreate(this.userValue).subscribe(data =>{
+    //   console.log(data);
+    //
+    //
+    //
+    //   if(data !=null){
+    //     this.presentToast();
+    //   }
+    // });
 
-
-
-      if(data !=null){
-        this.presentToast();
-      }
-    });
-
+    this.navCtrl.setRoot(LocationPage);
   }
 
   async presentToast() {

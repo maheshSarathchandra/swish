@@ -1,0 +1,38 @@
+<!--
+  Generated template for the LocationPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+</ion-header>
+
+<ion-content padding>
+
+  <div class="location-title">
+    <p class="location-title-data">Your Location</p>
+  </div>
+
+
+  <div class="location-description">
+   <p>tern on your location services or set it up manually so we can recommended you foods nearby</p>
+  </div>
+
+  <div>
+    <span></span>
+  </div>
+
+  <button ion-button class="location-detect" block (click)="detectMyLocation()">
+    <div class="location-detect-data">
+      <span>Detect My Location</span>
+    </div>
+  </button>
+
+  <button ion-button class="location-detect-manually" block (click)="setYourLocationManually()">
+    <div class="location-detect-manually-data">
+      <span>Set Location Manually</span>
+    </div>
+  </button>
+
+</ion-content>

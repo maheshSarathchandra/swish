@@ -1,15 +1,7 @@
-<!--
-  Generated template for the AppearPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
-  <ion-navbar>
-    <ion-title>appear</ion-title>
-  </ion-navbar>
-</ion-header>
-
-<ion-content padding>
-
-</ion-content>
+<ion-tabs tabsPlacement="bottom">
+  <ion-tab [root]="tabRoot1"   title="ios-home" tabIcon="ios-home" tabsHideOnSubPages="true"></ion-tab>
+  <ion-tab [root]="tabRoot2"   title="ios-heart" tabIcon="ios-heart"></ion-tab>
+  <ion-tab [root]="tabRoot3"   title="ios-basket" tabIcon="ios-basket"></ion-tab>
+  <ion-tab [root]="tabRoot4"   title="ios-search" tabIcon="ios-search"></ion-tab>
+  <ion-tab [root]="tabRoot5"   title="ios-contact" tabIcon="ios-contact"></ion-tab>
+</ion-tabs>

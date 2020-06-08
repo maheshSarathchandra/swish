@@ -1,0 +1,258 @@
+page-product {
+
+  .product-detail{
+
+
+
+    font-family: SF Pro Text;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 26px;
+
+
+
+    color: #000000;
+
+
+
+    flex: none;
+    order: 0;
+    margin: 0px 8px;
+
+  }
+
+  .available-product{
+
+    position: static;
+    height: 18px;
+    left: 0px;
+    right: 0px;
+    top: 34px;
+
+    font-family: SF Pro Text;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 18px;
+
+
+
+
+
+    color: #ADADAD;
+
+
+
+    flex: none;
+    order: 1;
+    margin: 0px 8px;
+  }
+
+  .search-data{
+
+  }
+
+  .searchbar-ios{
+
+    background: transparent;
+
+    border-top: 0.55px solid rgba(0,0,0,0.2);
+  }
+
+  .header-ios{
+    .toolbar-background-ios{
+
+      border-color: rgba(0,0,0,0);
+    }
+
+  }
+  .toolbar-background-ios{
+
+    background: rgba(0,0,0,0);
+  }
+
+  .image-container{
+
+    min-height:200px;
+    background-size:cover;
+
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+  }
+
+  .grid-data{
+
+    position: relative;
+    top: 24px;
+    left:0px;
+
+
+
+  }
+
+
+  .product-button {
+
+
+    position: relative;
+    top: 2px;
+    height: 30px;
+    width: 81%;
+
+
+    background: #EB0C6D;
+    border-radius: 8px;
+
+
+    flex: none;
+    order: 2;
+    margin: 0px 8px;
+  }
+
+  .button-data{
+
+    position: absolute;
+    width: 80px;
+    height: 17px;
+    left: calc(50% - 80px/2 - 1px);
+    top: calc(50% - 17px/2 + 0.5px);
+
+    font-family: SF Pro Text;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 17px;
+
+
+    text-align: center;
+
+
+
+    color: #FFFFFF;
+  }
+
+  .product-rating {
+    ul {
+      padding: 0 1px;
+      margin: 0;
+
+      &.rating li {
+        padding: 1px !important;
+        background: none;
+        color: #ADADAD;
+
+        ion-icon {
+          font-size: 11px;
+        }
+      }
+    }
+  }
+
+  .doller-value{
+
+    position: static;
+    width: 163px;
+    height: 19px;
+    left: 0px;
+    top: 41px;
+
+    font-family: SF Pro Text;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+
+
+
+
+
+    color: #EB0C6D;
+
+
+
+    flex: none;
+    order: 2;
+    margin: 0px 4px;
+  }
+
+  .vender-data{
+
+    position: static;
+    width: 164px;
+    height: 14px;
+    left: 0px;
+    top: 64px;
+
+    font-family: SF Pro Text;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+
+
+
+    color: #ADADAD;
+
+
+
+    flex: none;
+    order: 3;
+    margin: 0px 4px;
+  }
+
+  .product-button-data{
+
+    position: relative;
+    top: 1px;
+    height: 30px;
+    width: 51%;
+
+
+    background: #EB0C6D;
+    border-radius: 8px;
+
+
+    flex: none;
+    order: 2;
+    margin: 0px 8px;
+  }
+
+  .one-image{
+
+    height: 206px;
+
+
+  }
+
+  .product-header{
+
+    margin-left: 206px;
+    margin-top: 20%;
+
+  }
+
+
+
+
+}
+
+ion-searchbar {
+
+
+
+  border-radius: 8px;
+  border: 1px solid #e6e9ee;
+  padding: 8px 8px 8px 56px;
+  color: #4C555A;
+  font-size: 16px;
+  box-shadow: none;
+
+  width: 61%;
+}
+
+img{
+
+  margin-block-start: -43px;
+}

@@ -18,6 +18,15 @@ import {CompletedataPage} from "../pages/completedata/completedata";
 import { LoginserviceProvider } from '../providers/loginservice/loginservice';
 import {UserPage} from "../pages/user/user";
 import {HttpClientModule} from "@angular/common/http";
+import {Geolocation} from "@ionic-native/geolocation";
+import {LocationPage} from "../pages/location/location";
+import {DashboardPage} from "../pages/dashboard/dashboard";
+import {ProfilePage} from "../pages/profile/profile";
+import {SelectPage} from "../pages/select/select";
+import {SearchPage} from "../pages/search/search";
+import {FavoritePage} from "../pages/favorite/favorite";
+import {ProductPage} from "../pages/product/product";
+import {Ionic2RatingModule} from "ionic2-rating";
 
 
 
@@ -33,13 +42,29 @@ import {HttpClientModule} from "@angular/common/http";
     OtpsignupPage,
     PasswordPage,
     CompletedataPage,
-    UserPage
+    UserPage,
+    LocationPage,
+    DashboardPage,
+    ProfilePage,
+    SearchPage,
+    SelectPage,
+    FavoritePage,
+    ProductPage
   ],
   imports: [
     BrowserModule,
     NgOtpInputModule,
     HttpClientModule,
-    IonicModule.forRoot(MyApp)
+    Ionic2RatingModule,
+    IonicModule.forRoot(MyApp,{
+      platforms:{
+        ios:{
+          backButtonText:'',
+          backButtonIcon: 'ios-arrow-round-back-outline'
+        }
+      }
+
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -53,11 +78,19 @@ import {HttpClientModule} from "@angular/common/http";
     OtpsignupPage,
     PasswordPage,
     CompletedataPage,
-    UserPage
+    UserPage,
+    LocationPage,
+    DashboardPage,
+    ProfilePage,
+    SearchPage,
+    SelectPage,
+    FavoritePage,
+    ProductPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     LoginserviceProvider
   ]

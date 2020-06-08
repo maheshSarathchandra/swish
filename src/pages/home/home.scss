@@ -1,3 +1,45 @@
 page-home {
 
+  .option-1{
+
+
+    position: relative;
+    width: 102px;
+    height: 33px;
+    left: calc(50% - 102px/2 - 116.5px);
+    top: 0px;
+
+    flex: none;
+    order: 0;
+    align-self: center;
+    margin: 12px 0px;
+
+    background: #393939;
+    border-radius: 17px;
+  }
+
+
+
 }
+
+ion-toolbar.scrollable-segments {
+  display: block;
+  overflow-x: scroll;
+  white-space: nowrap;
+  margin: 0px 0px 0px 0px;
+  min-height: 0px ;
+
+}
+
+
+ion-toolbar.scrollable-segments::-webkit-scrollbar {
+  height: 0;
+  width: 0;
+  display: none;
+}
+
+ion-toolbar.scrollable-segments ion-button{
+  display: inline-block;
+  width: auto;
+}
+

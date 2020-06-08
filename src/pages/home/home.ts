@@ -7,8 +7,13 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
+  translate: string;
+
   constructor(public navCtrl: NavController) {
 
   }
 
+  getItems($event){
+
+  }
 }

@@ -1,0 +1,74 @@
+page-vender {
+
+
+  .fixed-content{
+
+    width: 100%;
+  }
+
+  .product-rating {
+    ul {
+      padding: 0 1px;
+      margin: 0;
+
+      &.rating li {
+        padding: 1px !important;
+        background: none;
+        color: #ADADAD;
+
+        ion-icon {
+          font-size: 11px;
+        }
+      }
+    }
+  }
+
+  .details{
+
+
+
+
+    font-family: SF Pro Text;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+
+
+    text-align: center;
+
+
+
+    color: #ADADAD;
+
+
+
+    flex: none;
+    order: 2;
+    margin: 0px 8px;
+  }
+
+  .status{
+
+
+
+    font-family: SF Pro Text;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+
+
+    text-align: center;
+
+
+
+    color: #EB0C6D;
+
+
+
+    flex: none;
+    order: 2;
+    margin: 0px 24px;
+  }
+}

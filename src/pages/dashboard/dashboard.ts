@@ -1,7 +1,9 @@
 import {Component, ViewChild} from '@angular/core';
-import {App, IonicPage, NavController, NavParams, Slides} from 'ionic-angular';
-import {HomePage} from "../home/home";
+import {IonicPage, NavController, NavParams, Slides} from 'ionic-angular';
 import {ProductPage} from "../product/product";
+import {LoginserviceProvider} from "../../providers/loginservice/loginservice";
+import {CartPage} from "../cart/cart";
+import {ProductdetailsPage} from "../productdetails/productdetails";
 
 
 /**
@@ -24,15 +26,24 @@ export class DashboardPage {
 
   galleryType = 'regular';
 
-  imagesData = [{urlData:'../../assets/imgs/image%204.jpg',id:'3'},{urlData:'../../assets/imgs/image%205.jpg',id:'1'},{urlData:'../../assets/imgs/image%206.jpg',id:'2'}];
+  imagesData;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private app: App) {
+
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+              public loginservice: LoginserviceProvider) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DashboardPage');
 
     this.slides.autoplayDisableOnInteraction = false;
+
+    this.loginservice.availableProducts().subscribe(data=>{
+
+      console.log(data);
+
+      this.imagesData = data;
+    })
   }
 
   public ionViewWillLeave(){
@@ -49,6 +60,10 @@ export class DashboardPage {
 
 
     this.slides.startAutoplay();
+
+
+
+
   }
 
 
@@ -58,7 +73,7 @@ export class DashboardPage {
 
   oderItem(){
 
-this.navCtrl.push(HomePage);
+this.navCtrl.push(ProductdetailsPage);
 
 console.log("this created");
 
@@ -66,14 +81,15 @@ console.log("this created");
 
  pageValue(data) {
 
-   if(data==='1'){
+    console.log(data);
 
-     this.navCtrl.push(ProductPage);
-   }else{
+     this.navCtrl.push(ProductPage,{data:data});
 
+ }
 
-   }
+ openCart(){
 
+    this.navCtrl.push(CartPage);
  }
 
 }

@@ -1,0 +1,141 @@
+<!--
+  Generated template for the CartPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header class="header-ios">
+
+  <ion-navbar color="toolbardata">
+    <ion-title>your cart</ion-title>
+  </ion-navbar>
+
+  <ion-toolbar color="toolbardata" class="toolbar-background-ios toolbar">
+
+   <input type="text" class="searchbar-input-container searchbar-input" placeholder="Enter coupon code">
+
+    <ion-buttons end>
+     <button ion-button color="buttoncolor">
+       <ion-icon ios="ios-send" style="zoom:2;"></ion-icon>
+     </button>
+    </ion-buttons>
+
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list class="item-complex item-content item">
+
+    <ion-item *ngFor="let images of imagesData">
+
+      <ion-row >
+
+        <ion-col col-4>
+          <img style="background: #DDDDDD;border-radius: 8px;width: 100%" src='{{images.urlData}}'>
+
+
+        </ion-col>
+
+        <ion-col col-8>
+          <div>
+
+            <span>Product Name</span>
+
+          </div>
+
+          <ion-row>
+
+            <ion-col col-8>
+
+              <h4  style="font-size: 12px;" padding-top>vender name</h4>
+            </ion-col>
+
+            <ion-col col-3>
+
+              <button ion-button small color="toolbardata">
+
+                <ion-icon ios="ios-trash" md="md-trash" style="zoom: 1;"></ion-icon>
+              </button>
+
+
+            </ion-col>
+          </ion-row>
+
+
+
+          <ion-row padding-top>
+            <ion-col col-3>
+
+              <div style="background: #f1f1f1;width: 31px;">
+               <p style="color: #EB0C6D">$2.5</p>
+              </div>
+            </ion-col>
+
+            <ion-col col-6 no-padding>
+
+              <div  class="count">
+                  <span class="item-count">
+                      -
+                    </span>
+                <span class="item-count show-count">
+                    {{data}}
+
+                     </span>
+                <span class="item-count">
+                       +
+
+                   </span>
+
+              </div>
+
+
+            </ion-col>
+            <ion-col col-2>
+
+              <div style="background: #f1f1f1;width: 31px;">
+                <p style="color: #EB0C6D">$2.5</p>
+              </div>
+            </ion-col>
+
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-item>
+
+    <div class="more-data" padding-bottom>
+      <button ion-button block style="-webkit-border-radius: 21px;-moz-border-radius: 21px;border-radius: 21px;" color="buttoncolordata">
+        Add more items
+      </button>
+    </div>
+
+  </ion-list>
+
+  <div >
+    <ion-row>
+      <ion-col col-8>
+
+        <p>Total</p>
+      </ion-col>
+
+      <ion-col col-4>
+
+        <p style="color: #EB0C6D">$7.5</p>
+
+      </ion-col>
+
+    </ion-row>
+
+    <ion-row>
+
+      <ion-col>
+
+        <button ion-button block color="buttoncolor" style="-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;">data</button>
+      </ion-col>
+    </ion-row>
+
+  </div>
+
+
+</ion-content>

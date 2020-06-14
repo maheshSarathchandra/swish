@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import {DashboardPage} from "../dashboard/dashboard";
-import {HomePage} from "../home/home";
 import {FavoritePage} from "../favorite/favorite";
 import {SelectPage} from "../select/select";
 import {SearchPage} from "../search/search";

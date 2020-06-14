@@ -1,0 +1,153 @@
+page-productdetails {
+
+  .slider{
+
+    max-width: 100%;
+  }
+
+  .product-detail-data{
+
+    font-family: SF Pro Text;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+
+
+
+    color: #000000;
+
+
+
+    flex: none;
+    order: 0;
+    margin: 0px 16px;
+
+  }
+
+  .product-details-value{
+
+    font-family: SF Pro Text;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 24px;
+
+
+
+
+
+    color: #EB0C6D;
+
+
+
+    flex: none;
+    order: 0;
+    margin: 0px 8px;
+  }
+
+  .product-rating {
+    ul {
+      padding: 0 1px;
+      margin: 0;
+
+      &.rating li {
+        padding: 1px !important;
+        background: none;
+        color: #ADADAD;
+
+        ion-icon {
+          font-size: 11px;
+        }
+      }
+    }
+  }
+
+  .product-deatils-vender{
+
+    font-family: SF Pro Text;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+
+
+
+
+
+    color: #000000;
+
+
+
+    flex: none;
+    order: 2;
+    margin: 0px 16px;
+  }
+
+  .count {
+    .item-count {
+      padding: 1.5px 9px;
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      background-color: #FCD537;
+
+    }
+    .show-count {
+      background-color: #F7F7F7 !important;
+
+      font-family: SF Pro Text;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 19px;
+
+
+      text-align: center;
+
+
+
+      color: #000000;
+    }
+    border-radius: 8px;
+  }
+
+  .add-cart{
+
+
+    left: calc(50% - 81px/2 - 0.5px);
+    top: calc(50% - 17px/2 + 0.5px);
+
+    font-family: SF Pro Text;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 17px;
+
+
+    text-align: center;
+
+
+
+    color: #FFFFFF;
+  }
+
+.get-item{
+
+  left: calc(50% - 62px/2 - 0.5px);
+  top: calc(50% - 17px/2 + 0.5px);
+
+  font-family: SF Pro Text;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 17px;
+
+
+  text-align: center;
+
+
+
+  color: #000000;
+}
+}

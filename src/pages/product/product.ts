@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {LoginserviceProvider} from "../../providers/loginservice/loginservice";
+import {VenderPage} from "../vender/vender";
 
 /**
  * Generated class for the ProductPage page.
@@ -19,11 +21,39 @@ export class ProductPage {
 
   galleryType = 'regular';
   imagesData = [{urlData:'../../assets/imgs/image%204.jpg',id:'3'},{urlData:'../../assets/imgs/image%205.jpg',id:'1'},{urlData:'../../assets/imgs/image%206.jpg',id:'2'}];
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+  productId: number;
+
+  productData;
+
+  nameData: string;
+
+  productCount: number;
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+              public loginservice: LoginserviceProvider) {
+
+    this.productId = navParams.get('data');
+
+    console.log(this.productId);
   }
+
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProductPage');
+
+    this.loginservice.specificProduct(this.productId).subscribe(data=>{
+
+      console.log(data);
+
+      this.nameData = data['name'];
+
+      this.productCount = data['count'];
+
+      console.log(this.nameData);
+
+      this.productData = data;
+    });
   }
 
 
@@ -37,8 +67,21 @@ export class ProductPage {
 
       this.galleryType = 'regular';
     }else{
-      this.galleryType = 'pinterest';
+      this.galleryType = 'listdata';
     }
+
+  }
+
+  ionViewWillEnter(){
+
+
+  }
+
+
+  venderDetails(){
+
+
+    this.navCtrl.push(VenderPage);
 
   }
 }

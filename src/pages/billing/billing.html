@@ -1,0 +1,107 @@
+<!--
+  Generated template for the BillingPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header class="header-ios">
+  <ion-navbar color="dark">
+    <ion-title>billing</ion-title>
+  </ion-navbar>
+  <ion-toolbar color="light" class="toolbar-background-ios">
+<ion-segment [(ngModel)]="formTypes" >
+  <ion-segment-button value="billing">
+    Billing
+  </ion-segment-button>
+
+  <ion-segment-button value="delivery">
+    Delivery
+  </ion-segment-button>
+
+</ion-segment>
+
+  </ion-toolbar >
+</ion-header>
+
+<ion-content padding>
+
+  <div [ngSwitch]="formTypes">
+
+    <div *ngSwitchCase="'billing'">
+
+  <h4 style="font-family: SF Pro Text;font-style: normal;font-weight: 800;font-size: 22px;line-height: 26px;">Billing Address</h4>
+
+  <form  #form="ngForm" (ngSubmit)="userPayment()" novalidate>
+
+    <ion-list>
+
+      <ion-row>
+
+        <ion-col col-6>
+
+          <ion-label>First Name</ion-label>
+
+          <ion-input class="input-ios" type="text" placeholder=""></ion-input>
+
+
+        </ion-col>
+
+        <ion-col col-6>
+
+          <ion-label>Last Name</ion-label>
+
+          <ion-input  class="input-ios" type="text" placeholder=""></ion-input>
+
+        </ion-col>
+      </ion-row>
+
+      <ion-label>Company(Optional)</ion-label>
+
+      <ion-input class="input-ios" type="text" placeholder=""></ion-input>
+
+      <ion-label>Streat</ion-label>
+
+      <ion-input class="input-ios" type="text" placeholder=""></ion-input>
+
+      <ion-label>City</ion-label>
+
+      <ion-input class="input-ios" type="text" placeholder=""></ion-input>
+
+      <ion-label>State</ion-label>
+
+      <ion-input class="input-ios" type="text" placeholder=""></ion-input>
+
+      <ion-label>Zip</ion-label>
+
+      <ion-input class="input-ios" type="text" placeholder=""></ion-input>
+
+      <ion-label>Phone number</ion-label>
+
+      <ion-input  class="input-ios" type="text" placeholder=""></ion-input>
+
+      <button ion-button block style="margin-top: 8%;border-radius: 8px" color="buttoncolor">Save changes</button>
+
+
+    </ion-list>
+
+
+  </form>
+
+      </div>
+
+    <div *ngSwitchCase="'delivery'">
+
+    <form #form="ngForm"  (ngSubmit)="userPayment()" novalidate>
+
+      <ion-list>
+
+
+      </ion-list>
+
+    </form>
+
+    </div>
+
+  </div>
+
+</ion-content>

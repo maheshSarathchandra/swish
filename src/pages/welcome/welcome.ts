@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ToastController} from 'ionic-angular';
 import {SignupPage} from "../signup/signup";
 import {PasswordPage} from "../password/password";
+import {LoginserviceProvider} from "../../providers/loginservice/loginservice";
+
 
 /**
  * Generated class for the WelcomePage page.
@@ -19,11 +21,24 @@ export class WelcomePage {
 
   usernameData = {inputData:''};
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public toastCrtl: ToastController) {
+  consumer_key: string;
+
+  consumer_secret:string;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public toastCrtl: ToastController,
+              public loginservice: LoginserviceProvider) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad WelcomePage');
+
+    this.consumer_key = localStorage.getItem("woocommerce_consumer_key");
+    this.consumer_secret = localStorage.getItem("woocommerce_consumer_secret");
+
+
+
+    console.log(this.consumer_key);
+    console.log(this.consumer_secret);
   }
 
   login(){
@@ -69,9 +84,21 @@ export class WelcomePage {
 
     this.navCtrl.setRoot(SignupPage);
 
+
   }
 
+ionViewWillEnter(){
 
+
+  this.loginservice.appInfo().subscribe(data=>{
+
+  console.log(data);
+
+  });
+
+
+
+}
 
 
 }

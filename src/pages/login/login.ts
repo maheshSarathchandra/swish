@@ -22,6 +22,7 @@ export class LoginPage {
   login(){
 
     this.navCtrl.setRoot(WelcomePage);
+
   }
 
   ionViewDidLoad() {

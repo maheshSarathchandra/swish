@@ -5,15 +5,21 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 
 
+
+
+
+
+import {LoginPage} from "../pages/login/login";
 import {AppearPage} from "../pages/appear/appear";
+
+
 
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = AppearPage;
-
+  rootPage:any = null;
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -21,6 +27,17 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
     });
+
+    if(localStorage.getItem('wpIonicToken')){
+
+      this.rootPage = AppearPage;
+    }else{
+
+      this.rootPage = LoginPage;
+    }
   }
+
+
+
 }
 

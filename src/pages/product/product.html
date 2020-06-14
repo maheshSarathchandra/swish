@@ -7,9 +7,7 @@
 <ion-header class="header-ios">
 <ion-navbar color="dark">
 
-  <ion-title>
-    Brookdale
-  </ion-title>
+  <ion-title>{{nameData}}</ion-title>
 
   <ion-buttons end>
     <button ion-button>
@@ -18,31 +16,23 @@
   </ion-buttons>
 </ion-navbar>
 
-   <div >
-     <h4 class="product-detail">Our Special</h4>
+   <div no-padding style="margin-left: 11px;">
+     <h4 class="product-detail">{{nameData}}</h4>
 
-     <p class="available-product"> product available </p>
+     <p class="available-product">{{productCount}} product available </p>
    </div>
-  <ion-toolbar class="toolbar-background-ios">
 
-   <ion-searchbar class="searchbar-ios"  type="text" (ionInput)="getItems($event)" >
-
-
-   </ion-searchbar>
-   <ion-buttons class="search-button" end>
-     <button ion-button (click)="viewData(1)">
-       <ion-icon ios="ios-grid" md="md-grid" style="zoom: 2; color: #f1f1f1;"></ion-icon>
-     </button>
-     <button ion-button (click)="viewData(2)">
-       <ion-icon name="list-box" style="zoom: 2; color: #f1f1f1;"></ion-icon>
-     </button>
-   </ion-buttons>
-
-
- </ion-toolbar>
+  <ion-toolbar color="toolbardata" class="toolbar-background-ios toolbar" no-padding>
+    <ion-searchbar class="searchbar-ios searchbar-input" (ionInput)="getItems($event)" placeholder="{{'Type Item Name'}}">
+    </ion-searchbar>
+    <ion-buttons style="top: 6px;" end>
+      <button ion-button style="color: #f4f4f4;" (click)="viewData(1)"><ion-icon name="ios-grid" style="zoom: 2;color:lightgrey "></ion-icon></button>
+      <button ion-button  style="color: #f4f4f4;" (click)="viewData(2)"><ion-icon name="ios-list" style="zoom: 2;color: lightgrey;"></ion-icon></button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content >
 
 
 
@@ -66,48 +56,67 @@
             <p>$2.6</p>
           </div>
 
-          <div class="vender-data">
+          <div class="vender-data" (click)="venderDetails()">
             <p>vender</p>
           </div>
 
-            <button ion-buttons class="product-button" block>
-              <div class="button-data">
-                <span>
-                  Add to cart
-                </span>
+          <button ion-button block color="buttoncolor" style="-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;">
+            <div class="button-data" >
+              <span>Add to cart</span>
             </div>
-            </button>
+          </button>
 
 
         </ion-col>
       </ion-row>
     </ion-grid>
 
-    <div  *ngSwitchCase="'pinterest'">
+    <div  *ngSwitchCase="'listdata'">
+
+      <div class="one-image" *ngFor="let images of imagesData">
+        <ion-row>
+          <ion-col col-6>
 
 
-<div class="one-image" *ngFor="let images of imagesData">
 
-  <h6 class="product-header" style="font-size: 12px;">Product Name</h6>
-
-  <img  src='{{images.urlData}}'>
-
-  <div  class="product-rating">
-    <rating name="rating" id="rating-1"  readOnly="true" max="5" emptyStarIconName="star-outline"
-            halfStarIconName="star-half" starIconName="star" nullable="false">
-    </rating>
-  </div>
-
-  <button ion-button class="product-button-data" block>
-    <div class="button-data">
-                <span>
-                  Add to cart
-                </span>
-    </div>
-  </button>
+            <img style="background: #DDDDDD;border-radius: 8px;width: 100%" src='{{images.urlData}}'>
 
 
-</div>
+
+            <button ion-button block style="background: #EB0C6D;border-radius: 8px;height: 38px;">
+              <div class="button-data">
+
+                <span>Add to cart</span>
+
+              </div>
+            </button>
+
+          </ion-col>
+          <ion-col col-6>
+
+            <h4  style="font-size: 12px;">Product Name</h4>
+
+            <div  class="product-rating">
+              <rating name="rating" id="rating-1"  readOnly="true" max="5" emptyStarIconName="star-outline"
+                      halfStarIconName="star-half" starIconName="star" nullable="false">
+              </rating>
+
+              <div class="vender-data">
+
+                <span>vender data</span>
+
+              </div>
+            </div>
+
+            <div class="doller-value">
+              <span>$2.5</span>
+            </div>
+
+          </ion-col>
+        </ion-row>
+      </div>
+
+
     </div>
   </div>
 

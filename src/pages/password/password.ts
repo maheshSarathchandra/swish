@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {IonicPage, LoadingController, NavController, NavParams} from 'ionic-angular';
 import {LoginserviceProvider} from "../../providers/loginservice/loginservice";
-import {UserPage} from "../user/user";
+import {finalize} from "rxjs/operators";
+import {AppearPage} from "../appear/appear";
+
 
 /**
  * Generated class for the PasswordPage page.
@@ -19,7 +21,8 @@ export class PasswordPage {
 
   passwordData = {password:'',username : ''};
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public loginservice: LoginserviceProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public loginservice: LoginserviceProvider,
+              public loadingCtrl: LoadingController) {
 
     this.passwordData.username = navParams.get('username');
 
@@ -35,19 +38,35 @@ export class PasswordPage {
 
   loginUser(){
 
-console.log(this.passwordData);
+    if(this.passwordData.password===''){
 
-this.loginservice.userLogin(this.passwordData).subscribe(
-  data=>{
-    console.log(data);
+    }else {
 
-    localStorage.setItem('wpIonicToken',JSON.stringify(data));
-  }
-);
-    if(localStorage.getItem('wpIonicToken')){
+      console.log(this.passwordData);
 
-      this.navCtrl.setRoot(UserPage);
+      let loading = this.loadingCtrl.create({
+        spinner: 'bubbles',
+        content: 'Logging in ...'
+      });
+
+      loading.present();
+
+      this.loginservice.userLogin(this.passwordData)
+        .pipe(finalize(() => loading.dismissAll()))
+        .subscribe(
+          data => {
+            console.log(data);
+
+            if (data) {
+
+              this.navCtrl.setRoot(AppearPage);
+            }
+          }
+        );
+
     }
+
   }
+
 
 }

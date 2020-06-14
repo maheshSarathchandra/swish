@@ -49,32 +49,11 @@ page-product {
     margin: 0px 8px;
   }
 
-  .search-data{
 
-  }
-
-  .searchbar-ios{
-
-    background: transparent;
-
-    border-top: 0.55px solid rgba(0,0,0,0.2);
-  }
-
-  .header-ios{
-    .toolbar-background-ios{
-
-      border-color: rgba(0,0,0,0);
-    }
-
-  }
-  .toolbar-background-ios{
-
-    background: rgba(0,0,0,0);
-  }
 
   .image-container{
 
-    min-height:200px;
+    min-height:161px;
     background-size:cover;
 
     -webkit-border-radius: 8px;
@@ -219,12 +198,7 @@ page-product {
     margin: 0px 8px;
   }
 
-  .one-image{
 
-    height: 206px;
-
-
-  }
 
   .product-header{
 
@@ -233,26 +207,53 @@ page-product {
 
   }
 
+  .searchbar-ios{
 
+    background: white;
 
+    width: 93%;
 
+    .searchbar-input{
+
+      background-color: #4d4d4d;
+
+    }
+    border-block-end-width: 0px;
+  }
+
+  .header-ios{
+
+    .toolbar-background-ios{
+
+      border-color: white;
+    }
+  }
+
+  .searchbar-input{
+
+    margin-block-start: 4px;
+  }
+.toolbar{
+
+  .searchbar-ios{
+
+    border-top-width: 0px;
+  }
 }
 
-ion-searchbar {
+  .searchbar-ios{
 
+    .searchbar-input{
 
+      margin-block-start: 13px;
+    }
+  }
 
-  border-radius: 8px;
-  border: 1px solid #e6e9ee;
-  padding: 8px 8px 8px 56px;
-  color: #4C555A;
-  font-size: 16px;
-  box-shadow: none;
+  .button-color-data{
 
-  width: 61%;
+    background: rgba(235,12,109,1);
+
+    border-radius: 8px;
+  }
 }
 
-img{
-
-  margin-block-start: -43px;
-}

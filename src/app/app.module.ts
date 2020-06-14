@@ -27,6 +27,12 @@ import {SearchPage} from "../pages/search/search";
 import {FavoritePage} from "../pages/favorite/favorite";
 import {ProductPage} from "../pages/product/product";
 import {Ionic2RatingModule} from "ionic2-rating";
+import {VenderPage} from "../pages/vender/vender";
+import {ProductdetailsPage} from "../pages/productdetails/productdetails";
+import {CartPage} from "../pages/cart/cart";
+import {PaymentsPage} from "../pages/payments/payments";
+import {AccountPage} from "../pages/account/account";
+import {BillingPage} from "../pages/billing/billing";
 
 
 
@@ -49,7 +55,13 @@ import {Ionic2RatingModule} from "ionic2-rating";
     SearchPage,
     SelectPage,
     FavoritePage,
-    ProductPage
+    ProductPage,
+    VenderPage,
+    ProductdetailsPage,
+    CartPage,
+    PaymentsPage,
+    AccountPage,
+    BillingPage
   ],
   imports: [
     BrowserModule,
@@ -85,7 +97,13 @@ import {Ionic2RatingModule} from "ionic2-rating";
     SearchPage,
     SelectPage,
     FavoritePage,
-    ProductPage
+    ProductPage,
+    VenderPage,
+    ProductdetailsPage,
+    CartPage,
+    PaymentsPage,
+    AccountPage,
+    BillingPage
   ],
   providers: [
     StatusBar,

@@ -28,17 +28,17 @@
 
   </ion-slides>
 
-  <ion-item text-start>
+  <ion-item text-start *ngFor="let pr of productDeatailsData">
 
 
 <div class="product-detail-data" style="margin-left: 3%">
 
-  <p>Product Name(can be two rows like this)</p>
+  <p>{{pr.name}}</p>
 </div>
 
     <div class="product-details-value" padding-top>
 
-      <span>$2.5</span>
+      <span>{{pr.price}}</span>
     </div>
 
     <div  class="product-rating" style="margin-left: 2%" padding-top>
@@ -47,20 +47,19 @@
               halfStarIconName="star-half" starIconName="star" nullable="false">
       </rating>
     </div>
-
     <div class="product-deatils-vender" padding-top style="margin-left: 2%">
-     <p>vender</p>
+     <p>{{pr.store.vendor_display_name}}</p>
     </div>
 
    <div padding-top class="count">
-     <span class="item-count">
+     <span class="item-count" (click)="reduceNumber()">
        -
      </span>
      <span class="item-count show-count">
        {{data}} items
 
      </span>
-     <span class="item-count">
+     <span class="item-count" (click)="upQuntity()">
        +
 
      </span>
@@ -69,16 +68,18 @@
 
   </ion-item>
 
-  <ion-item text-start>
+  <ion-item text-start *ngFor="let p of productDeatailsData">
 
    <div>
 
      <span>Category</span>
    </div>
 
-    <div style="background:  #F7F7F7;" padding-top>
-      <p>Related Category</p>
+    <div style="background:  #F7F7F7;" padding-top *ngFor="let c of p.categories">
+      <p>{{c.name}}</p>
     </div>
+
+
 
   </ion-item>
 

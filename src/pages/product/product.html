@@ -40,10 +40,10 @@
 
     <ion-grid *ngSwitchCase="'regular'">
       <ion-row>
-        <ion-col col-6 col-md-4 col-xl-3 *ngFor="let image of imagesData">
-          <div class="image-container" [style.background-image]="'url('+image.urlData+')'"></div>
+        <ion-col col-6 col-md-4 col-xl-3 *ngFor="let image of productData">
+          <div class="image-container" [style.background-image]="'url('+'../../assets/imgs/no%20images.jpg'+')'" (click)="productDeatails(image.id)"></div>
 
-          <h6>Product Name</h6>
+          <h6>{{image.name}}</h6>
           <div  class="product-rating">
 
             <rating name="rating" id="rating"  readOnly="true" max="5" emptyStarIconName="star-outline"
@@ -53,14 +53,14 @@
 
           <div class="doller-value">
 
-            <p>$2.6</p>
+            <p>{{image.price}}</p>
           </div>
 
-          <div class="vender-data" (click)="venderDetails()">
-            <p>vender</p>
+          <div class="vender-data" (click)="venderDetails(image.store.vendor_id)">
+            <p>{{image.store.vendor_display_name}}</p>
           </div>
 
-          <button ion-button block color="buttoncolor" style="-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;">
+          <button ion-button block color="buttoncolor" style="-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;" (click)="cartItems(image.id)">
             <div class="button-data" >
               <span>Add to cart</span>
             </div>
@@ -73,17 +73,17 @@
 
     <div  *ngSwitchCase="'listdata'">
 
-      <div class="one-image" *ngFor="let images of imagesData">
+      <div class="one-image" *ngFor="let images of productData">
         <ion-row>
           <ion-col col-6>
 
 
 
-            <img style="background: #DDDDDD;border-radius: 8px;width: 100%" src='{{images.urlData}}'>
+            <img style="background: #DDDDDD;border-radius: 8px;width: 100%" src='../../assets/imgs/no%20images.jpg'>
 
 
 
-            <button ion-button block style="background: #EB0C6D;border-radius: 8px;height: 38px;">
+            <button ion-button block style="border-radius: 8px;height: 38px;" color="buttoncolor">
               <div class="button-data">
 
                 <span>Add to cart</span>
@@ -94,24 +94,23 @@
           </ion-col>
           <ion-col col-6>
 
-            <h4  style="font-size: 12px;">Product Name</h4>
+            <h4  style="font-size: 12px;">{{images.name}}</h4>
 
             <div  class="product-rating">
               <rating name="rating" id="rating-1"  readOnly="true" max="5" emptyStarIconName="star-outline"
                       halfStarIconName="star-half" starIconName="star" nullable="false">
               </rating>
 
-              <div class="vender-data">
+              <div class="vender-data" >
 
-                <span>vender data</span>
+                <span>{{images.store.vendor_display_name}}</span>
 
               </div>
             </div>
 
             <div class="doller-value">
-              <span>$2.5</span>
+              <span>{{images.price}}</span>
             </div>
-
           </ion-col>
         </ion-row>
       </div>

@@ -15,7 +15,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class VenderPage {
 
+
+ vendorData = [];
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+    this.vendorData = navParams.get('vendorData');
+
+    console.log(this.vendorData)
   }
 
   ionViewDidLoad() {

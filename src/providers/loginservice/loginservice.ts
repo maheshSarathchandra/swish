@@ -9,11 +9,20 @@ import {tap} from "rxjs/operators";
 export class LoginserviceProvider {
 
 
+  cartItems = {};
 
+  cartGetItems = [];
 
 
   constructor(public http: HttpClient) {
     console.log('Hello LoginserviceProvider Provider');
+
+
+
+    this.cartGetItems = JSON.parse(localStorage.getItem('oderItems'));
+
+
+    console.log(this.cartGetItems);
   }
 
   url = 'https://demo.swish.biz/wp';
@@ -87,6 +96,56 @@ export class LoginserviceProvider {
       })
     };
 
-    return this.http.get(this.url+"/wp-json/wc/v3/products/categories/"+id,httpOptions);
+    return this.http.get(this.url+"/wp-json/wc/v3/products/categories/"+id,httpOptions)
+      .pipe(tap(data=>{
+
+        return data;
+      }));
+  }
+
+
+  allproducts():Observable<any>{
+
+    const httpOptions = {
+
+
+      headers: new HttpHeaders({
+        'Authorization': 'Basic '+ btoa(localStorage.getItem('woocommerce_consumer_key')+':'+localStorage.getItem('woocommerce_consumer_secret'))
+      })
+    };
+
+    return this.http.get(this.url+"/wp-json/wc/v3/products",httpOptions)
+      .pipe(tap(data=>{
+
+        return data;
+      }));
+  }
+
+  saveCartItems(data){
+
+    if(data===null){
+
+
+    }else {
+
+
+
+      console.log(this.cartGetItems);
+
+     this.cartGetItems.push(data[0]);
+
+      console.log(this.cartGetItems);
+
+
+      localStorage.setItem('oderItems', JSON.stringify(this.cartGetItems));
+
+
+
+
+
+
+
+    }
+
   }
 }

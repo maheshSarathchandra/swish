@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {LoginserviceProvider} from "../../providers/loginservice/loginservice";
 import {VenderPage} from "../vender/vender";
+import {CartPage} from "../cart/cart";
+import {ProductdetailsPage} from "../productdetails/productdetails";
 
 /**
  * Generated class for the ProductPage page.
@@ -20,7 +22,6 @@ export class ProductPage {
   item = {};
 
   galleryType = 'regular';
-  imagesData = [{urlData:'../../assets/imgs/image%204.jpg',id:'3'},{urlData:'../../assets/imgs/image%205.jpg',id:'1'},{urlData:'../../assets/imgs/image%206.jpg',id:'2'}];
 
   productId: number;
 
@@ -29,6 +30,16 @@ export class ProductPage {
   nameData: string;
 
   productCount: number;
+
+ vendor = [];
+
+ vendorData = [];
+
+ cartData = [];
+
+ productDeatailsData = [];
+
+
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public loginservice: LoginserviceProvider) {
 
@@ -52,7 +63,20 @@ export class ProductPage {
 
       console.log(this.nameData);
 
-      this.productData = data;
+
+    });
+
+    this.loginservice.allproducts().subscribe(dataValue=>{
+
+      console.log(dataValue);
+
+      this.productData = dataValue;
+
+      for(let j of dataValue){
+
+        this.vendor.push(j.store);
+      }
+
     });
   }
 
@@ -75,13 +99,64 @@ export class ProductPage {
   ionViewWillEnter(){
 
 
+
+
+    console.log(this.vendor);
+
+
+
+
   }
 
 
-  venderDetails(){
+  venderDetails(data){
+
+    for(let j of this.vendor){
+
+      if(data===j.vendor_id){
+        this.vendorData.push(j);
+
+        break;
+      }
+    }
 
 
-    this.navCtrl.push(VenderPage);
+    this.navCtrl.push(VenderPage,{vendorData: this.vendorData});
 
+  }
+
+
+  cartItems(data){
+
+    for(let j of this.productData){
+
+      if(data=== j.id){
+
+        this.cartData.push(j);
+
+        break;
+      }
+    }
+
+    this.loginservice.saveCartItems(this.cartData);
+
+   this.navCtrl.push(CartPage);
+  }
+
+  productDeatails(data){
+
+    this.productDeatailsData = [];
+
+    for(let j of this.productData){
+
+      if(data=== j.id){
+
+        this.productDeatailsData.push(j);
+
+        break;
+      }
+    }
+
+    this.navCtrl.push(ProductdetailsPage,{data:this.productDeatailsData});
   }
 }

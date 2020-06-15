@@ -86,11 +86,13 @@ page-productdetails {
 
   .count {
     .item-count {
-      padding: 1.5px 9px;
+      padding: 8px 32px;
       font-size: 18px;
       font-weight: 700;
       color: #fff;
       background-color: #FCD537;
+
+      border-radius: 16px;
 
     }
     .show-count {

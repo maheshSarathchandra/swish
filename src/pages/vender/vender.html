@@ -27,11 +27,11 @@
 
 
 
-      <ion-item text-center>
+      <ion-item text-center *ngFor="let v of vendorData">
 
         <img style="margin-block-start: 0px; height: 41px;" src="../../assets/imgs/image%208%20(1).jpg">
 
-        <h6 style="top: 11px; position: relative;">Vender Name</h6>
+        <h6 style="top: 11px; position: relative;">{{v.vendor_shop_name}}</h6>
 
         <div  class="product-rating" padding-top>
 
@@ -40,12 +40,18 @@
           </rating>
         </div>
 
-        <div class="details" padding-top>
-          <p>data</p>
-        </div>
+        <ion-row>
+          <ion-col>
+            <div class="details" padding-top>
+              <p>{{v.vendor_address}}</p>
+            </div>
+
+          </ion-col>
+
+        </ion-row>
 
         <div class="status" padding-top>
-          <span>status</span>
+          <span >status</span>
         </div>
 
       </ion-item>

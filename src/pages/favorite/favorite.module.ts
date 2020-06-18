@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { FavoritePage } from './favorite';
+import {Ionic2RatingModule} from "ionic2-rating";
 
 @NgModule({
   declarations: [
@@ -8,6 +9,7 @@ import { FavoritePage } from './favorite';
   ],
   imports: [
     IonicPageModule.forChild(FavoritePage),
+    Ionic2RatingModule,
   ],
 })
 export class FavoritePageModule {}

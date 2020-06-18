@@ -13,6 +13,8 @@ export class LoginserviceProvider {
 
   cartGetItems = [];
 
+  favoriteItems = [];
+
 
   constructor(public http: HttpClient) {
     console.log('Hello LoginserviceProvider Provider');
@@ -21,8 +23,12 @@ export class LoginserviceProvider {
 
     this.cartGetItems = JSON.parse(localStorage.getItem('oderItems'));
 
+    this.favoriteItems = JSON.parse(localStorage.getItem('favoriteItems'));
+
 
     console.log(this.cartGetItems);
+
+    console.log(this.favoriteItems);
   }
 
   url = 'https://demo.swish.biz/wp';
@@ -137,6 +143,8 @@ export class LoginserviceProvider {
       console.log(this.cartGetItems);
 
 
+
+
       localStorage.setItem('oderItems', JSON.stringify(this.cartGetItems));
 
 
@@ -147,5 +155,80 @@ export class LoginserviceProvider {
 
     }
 
+  }
+
+  removeCartItems(dataItems){
+
+    this.cartGetItems = JSON.parse(localStorage.getItem('oderItems'));
+
+    for(let j of this.cartGetItems){
+
+      if(dataItems.id=== j.id){
+
+       this.cartGetItems.splice(j,1);
+
+        break;
+      }
+
+
+    }
+
+    localStorage.removeItem('oderItems');
+
+
+    localStorage.setItem('oderItems', JSON.stringify(this.cartGetItems));
+
+
+
+  }
+
+  saveFavorite(data){
+
+
+    if(data===null){
+
+
+    }else {
+
+
+
+      console.log(this.favoriteItems);
+
+     this.favoriteItems.push(data[0]);
+
+      console.log(this.favoriteItems);
+
+
+
+
+      localStorage.setItem('favoriteItems', JSON.stringify(this.favoriteItems));
+
+
+
+
+
+
+
+    }
+
+  }
+
+  customerData(userId){
+
+    const httpOptions = {
+
+
+      headers: new HttpHeaders({
+        'Authorization': "Bearer "+ "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvZGVtby5zd2lzaC5iaXpcL3dwIiwiaWF0IjoxNTkyNDcyMzA5LCJuYmYiOjE1OTI0NzIzMDksImV4cCI6MTU5MzA3NzEwOSwiZGF0YSI6eyJ1c2VyIjp7ImlkIjoiMjMifX19.wYCPxjt22geYs0TzrPp_XpzeUbWzuiqojHWeW24fkkc"
+      })
+    };
+
+
+    return this.http.get(this.url+"/wp-json/wc/v3/customers/"+userId,httpOptions)
+      .pipe(tap(data=>{
+
+
+          return data;
+        }));
   }
 }

@@ -11,6 +11,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import {LoginPage} from "../pages/login/login";
 import {AppearPage} from "../pages/appear/appear";
+import {LocationPage} from "../pages/location/location";
 
 
 
@@ -33,7 +34,7 @@ export class MyApp {
       this.rootPage = AppearPage;
     }else{
 
-      this.rootPage = LoginPage;
+      this.rootPage = LocationPage;
     }
   }
 

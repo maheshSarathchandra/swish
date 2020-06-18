@@ -1,3 +1,37 @@
 page-search {
 
+
+
+  .header-ios{
+
+    .toolbar-background-ios{
+
+      border-color: #222222;
+    }
+  }
+
+  .searchbar-input{
+
+    margin-block-start: 4px;
+  }
+
+
+  .toolbar{
+
+    .searchbar-ios{
+
+      border-top-width: 0px;
+    }
+  }
+
+  .searchbar-ios{
+
+    .searchbar-input{
+
+      margin-block-start: 13px;
+    }
+  }
+
+
+
 }

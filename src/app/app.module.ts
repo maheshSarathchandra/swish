@@ -33,6 +33,7 @@ import {CartPage} from "../pages/cart/cart";
 import {PaymentsPage} from "../pages/payments/payments";
 import {AccountPage} from "../pages/account/account";
 import {BillingPage} from "../pages/billing/billing";
+import {NativeGeocoder} from "@ionic-native/native-geocoder";
 
 
 
@@ -109,6 +110,7 @@ import {BillingPage} from "../pages/billing/billing";
     StatusBar,
     SplashScreen,
     Geolocation,
+    NativeGeocoder,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     LoginserviceProvider
   ]

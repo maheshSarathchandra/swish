@@ -90,10 +90,10 @@
 
   <ion-list style="margin-block-start: -23px">
 
-    <ion-item>
+    <ion-item >
 
 
-        <button ion-button style="width: 42%;height:41px;background: #EB0C6D;border-radius: 8px;">
+        <button ion-button style="width: 42%;height:41px;border-radius: 8px;" color="buttoncolor" (click)="cartData()">
           <div class="add-cart">
             <span>Add to cart</span>
           </div></button>
@@ -106,7 +106,7 @@
           </div>
 
         </button>
-        <button ion-button  style="height: 41px;">
+        <button ion-button  style="height: 41px;" (click)="favoriteItems()">
           <ion-icon name="ios-heart-outline" style="zoom: 2;"></ion-icon>
         </button>
 

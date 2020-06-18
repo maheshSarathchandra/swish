@@ -28,7 +28,7 @@
 
   <ion-list class="item-complex item-content item">
 
-    <ion-item *ngFor="let images of cartItems">
+    <ion-item *ngFor="let images of specificItem">
 
       <ion-row >
 
@@ -49,12 +49,12 @@
 
             <ion-col col-8>
 
-              <h4  style="font-size: 12px;" padding-top>{{images.store.vendor_display_name}}</h4>
+              <h4  style="font-size: 12px;" padding-top>{{images.vendor}}</h4>
             </ion-col>
 
             <ion-col col-3>
 
-              <button ion-button small color="toolbardata">
+              <button ion-button small color="toolbardata"  (click)="removeItems(images)">
 
                 <ion-icon ios="ios-trash" md="md-trash" style="zoom: 1;"></ion-icon>
               </button>
@@ -75,15 +75,16 @@
 
             <ion-col col-6 no-padding>
 
-              <div  class="count">
+              <div  class="count" >
                   <span class="item-count" (click)="reduceNumber()">
                       -
                     </span>
                 <span class="item-count show-count">
-                    {{data}}
+
+                  {{images.numberOfData}}
 
                      </span>
-                <span class="item-count" (click)="upQuntity(images.id)">
+                <span class="item-count" (click)="upQuntity(images)">
                        +
 
                    </span>
@@ -94,8 +95,10 @@
             </ion-col>
             <ion-col col-2>
 
+
+
               <div style="background: #f1f1f1;width: 31px;">
-                <p style="color: #EB0C6D">${{totalPrice}}</p>
+                <p style="color: #EB0C6D">$2.5</p>
               </div>
             </ion-col>
 
@@ -121,7 +124,7 @@
 
       <ion-col col-4>
 
-        <p style="color: #EB0C6D">$7.5</p>
+        <p style="color: #EB0C6D">{{totalPrice}}</p>
 
       </ion-col>
 

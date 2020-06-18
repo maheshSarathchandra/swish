@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {App, IonicPage, NavController, NavParams} from 'ionic-angular';
 import {LoginPage} from "../login/login";
+import {LoginserviceProvider} from "../../providers/loginservice/loginservice";
 
 /**
  * Generated class for the ProfilePage page.
@@ -16,11 +17,30 @@ import {LoginPage} from "../login/login";
 })
 export class ProfilePage {
 
-  showContent = false;
+  showDashbord = false;
 
-  showingValueData = 'arrow-dropdown';
+  showingValueDashboard = 'arrow-dropdown';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public app: App) {
+  showDownloads = false;
+
+  showingValueDownload = 'arrow-dropdown';
+
+
+  showAddresses = false;
+
+  showingValueAddresses = 'arrow-dropdown';
+
+  addressLineOne: string;
+
+  addressLineTwo: string;
+
+  city: string;
+
+  postalCode: string;
+
+
+
+  constructor(public navCtrl: NavController, public navParams: NavParams,public app: App,public loginservice: LoginserviceProvider) {
   }
 
   ionViewDidLoad() {
@@ -48,25 +68,84 @@ export class ProfilePage {
     console.log("clear data");
   }
 
-  showData() {
+  showDashboard() {
 
-    if(this.showContent){
+    if(this.showDashbord){
 
-      this.showContent = false;
+      this.showDashbord = false;
 
-      this.showingValueData = 'arrow-dropdown';
+      this.showingValueDashboard = 'arrow-dropdown';
 
 
     }else{
 
-      this.showContent = true;
+      this.showDashbord = true;
 
-      this.showingValueData = 'arrow-dropup'
+      this.showingValueDashboard = 'arrow-dropup'
+
+    }
+
+    console.log("this is dashboard");
+  }
+
+
+  showDownload(){
+
+    if(this.showDownloads){
+
+      this.showDownloads = false;
+
+      this.showingValueDownload = 'arrow-dropdown';
+
+
+    }else{
+
+      this.showDownloads = true;
+
+      this.showingValueDownload = 'arrow-dropup'
 
     }
 
   }
 
+
+
+  showAddress(){
+
+    if(this.showAddresses){
+
+      this.showAddresses = false;
+
+      this.showingValueAddresses = 'arrow-dropdown';
+
+
+    }else{
+
+      this.showAddresses = true;
+
+      this.showingValueAddresses = 'arrow-dropup'
+
+    }
+
+
+    this.loginservice.customerData('23').subscribe(data=>{
+
+      this.addressLineOne = data['billing']['address_1'];
+
+      this.addressLineTwo = data['billing']['address_2'];
+
+      this.city = data['billing']['city'];
+
+      this.postalCode = data['billing']['postcode'];
+
+      console.log(this.addressLineTwo);
+
+      console.log(this.city);
+
+      console.log(data);
+    })
+
+  }
 
 
 }

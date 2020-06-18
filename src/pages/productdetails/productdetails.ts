@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {LoginserviceProvider} from "../../providers/loginservice/loginservice";
 
 /**
  * Generated class for the ProductdetailsPage page.
@@ -21,7 +22,7 @@ export class ProductdetailsPage {
 
   productDeatailsData = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public loginservice: LoginserviceProvider) {
 
     this.productDeatailsData = navParams.get('data');
 
@@ -53,5 +54,17 @@ export class ProductdetailsPage {
 
     this.data = this.data + 1;
 
+  }
+
+  cartData(){
+
+    this.loginservice.saveCartItems(this.productDeatailsData);
+  }
+
+  favoriteItems(){
+
+    this.loginservice.saveFavorite(this.productDeatailsData);
+
+    console.log(this.productDeatailsData);
   }
 }

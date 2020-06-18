@@ -27,20 +27,77 @@
     </div>
   </div>
 
-  <ion-card>
-    <ion-card-header (click)="showData()">
-      <ion-icon item-right [name]="showingValueData"></ion-icon>
 
-      Download
 
-    </ion-card-header>
+    <div>
+      <ion-card>
+        <ion-card-header (click)="showDashboard()">
+          <ion-icon item-right [name]="showingValueDashboard"></ion-icon>
 
-    <ion-card-content *ngIf="showContent">
+          Dashboard
 
-      some data is also here for showing
-    </ion-card-content>
+        </ion-card-header>
 
-  </ion-card>
+        <ion-card-content *ngIf="showDashbord">
+
+          some data is also here for showing
+        </ion-card-content>
+
+      </ion-card>
+
+
+    </div>
+
+    <div style="margin-top: 11px;">
+
+
+      <ion-card>
+        <ion-card-header (click)="showDownload()">
+          <ion-icon item-right [name]="showingValueDownload"></ion-icon>
+
+          Download
+
+        </ion-card-header>
+
+        <ion-card-content *ngIf="showDownloads">
+
+          some data is also here for showing
+        </ion-card-content>
+
+      </ion-card>
+
+    </div>
+
+  <div style="margin-top: 11px;">
+
+
+    <ion-card>
+      <ion-card-header (click)="showAddress()">
+        <ion-icon item-right [name]="showingValueAddresses"></ion-icon>
+
+        Address
+
+      </ion-card-header>
+
+      <ion-card-content *ngIf="showAddresses">
+
+        <h4>Billing Address</h4>
+
+        <div>
+          <p>{{addressLineOne}}</p>
+          <p>{{addressLineTwo}}</p>
+          <p>{{city}}</p>
+          <p>{{postalCode}}</p>
+        </div>
+      </ion-card-content>
+
+    </ion-card>
+
+  </div>
+
+
+
+
 
   <button ion-button block (click)="logOutUser()">log out</button>
 

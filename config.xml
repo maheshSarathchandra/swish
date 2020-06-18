@@ -108,4 +108,7 @@
         <variable name="GPS_REQUIRED" value="false" />
         <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="To locate you" />
     </plugin>
+    <plugin name="cordova-plugin-nativegeocoder" spec="^3.4.1">
+        <variable name="LOCATION_WHEN_IN_USE_DESCRIPTION" value="Use geocoder service" />
+    </plugin>
 </widget>

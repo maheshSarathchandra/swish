@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Geolocation} from "@ionic-native/geolocation";
 import {DashboardPage} from "../dashboard/dashboard";
+import {NativeGeocoder, NativeGeocoderOptions, NativeGeocoderReverseResult} from "@ionic-native/native-geocoder";
 
 /**
  * Generated class for the LocationPage page.
@@ -17,15 +18,20 @@ import {DashboardPage} from "../dashboard/dashboard";
 })
 export class LocationPage {
 
-latitudeData: number;
-
-longitudeData: number;
-
-accuracyData: number;
-
+  geoLatitude: number;
+  geoLongitude: number;
+  geoAccuracy:number;
+  geoAddress: string;
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public locationData: Geolocation) {
+  options: NativeGeocoderOptions = {
+    useLocale: true,
+    maxResults: 5
+  };
+
+
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public geoLocation: Geolocation, public nativeGeocoder: NativeGeocoder) {
   }
 
   ionViewDidLoad() {
@@ -35,21 +41,57 @@ accuracyData: number;
 
   detectMyLocation(){
 
-    this.locationData.getCurrentPosition().then((data)=>{
+    this.geoLocation.getCurrentPosition().then((res)=>{
 
-      this.latitudeData = data.coords.latitude;
 
-      this.longitudeData = data.coords.longitude;
+      this.geoLatitude = res.coords.latitude;
+      this.geoLongitude = res.coords.longitude;
+      this.geoAccuracy = res.coords.accuracy;
 
-      this.accuracyData = data.coords.accuracy;
+      this.getGeoCoder(this.geoLongitude,this.geoLongitude);
 
+
+      console.log(this.geoLatitude+","+this.geoLongitude);
+    }).catch((error)=>{
+
+      console.log("Error getting location"+JSON.stringify(error));
     });
 
-    this.navCtrl.setRoot(DashboardPage);
+
+
   }
+
+
+
+  getGeoCoder(latitude,longitude){
+
+    this.nativeGeocoder.reverseGeocode(latitude,longitude, this.options)
+      .then((result: NativeGeocoderReverseResult[]) => {
+        this.geoAddress = this.generateAddress(result[0]);
+
+      })
+      .catch((error: any) => console.log("Error getting location"+error));
+  }
+
+
+  generateAddress(addressObj){
+    let obj = [];
+    let address = "";
+    for (let key in addressObj) {
+      obj.push(addressObj[key]);
+    }
+    obj.reverse();
+    for (let val in obj) {
+      if(obj[val].length)
+        address += obj[val]+', ';
+    }
+    return address.slice(0, -2);
+  }
+
 
   setYourLocationManually(){
 
 
   }
+
 }

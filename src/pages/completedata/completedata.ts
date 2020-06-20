@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
 import {LoginserviceProvider} from "../../providers/loginservice/loginservice";
 import {LocationPage} from "../location/location";
+import {Dto} from "../signup/signup";
 
 /**
  * Generated class for the CompletedataPage page.
@@ -21,9 +22,17 @@ export class CompletedataPage {
 
   userValue : any;
 
+  loginUserData: Dto;
+
+  passwordData = {password:'',username : ''};
+
   constructor(public navCtrl: NavController, public navParams: NavParams,public loginservice: LoginserviceProvider,
               public toastController : ToastController) {
     this.userValue = navParams.get('userData');
+
+    this.loginUserData = navParams.get('userData');
+
+    console.log(this.loginUserData);
     console.log(this.userValue);
 
   }
@@ -46,6 +55,9 @@ export class CompletedataPage {
     //   }
     // });
 
+    this.loginUser();
+
+
     this.navCtrl.setRoot(LocationPage);
   }
 
@@ -55,5 +67,17 @@ export class CompletedataPage {
       duration: 2000
     });
     toast.present();
+  }
+
+  loginUser(){
+
+  this.passwordData.password = this.loginUserData.password;
+
+  this.passwordData.username = this.loginUserData.email;
+
+  this.loginservice.userLogin(this.passwordData).subscribe(data=>{
+
+    console.log(data);
+  });
   }
 }

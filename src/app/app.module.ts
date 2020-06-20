@@ -34,6 +34,7 @@ import {PaymentsPage} from "../pages/payments/payments";
 import {AccountPage} from "../pages/account/account";
 import {BillingPage} from "../pages/billing/billing";
 import {NativeGeocoder} from "@ionic-native/native-geocoder";
+import {ChangedataPage} from "../pages/changedata/changedata";
 
 
 
@@ -62,7 +63,8 @@ import {NativeGeocoder} from "@ionic-native/native-geocoder";
     CartPage,
     PaymentsPage,
     AccountPage,
-    BillingPage
+    BillingPage,
+    ChangedataPage
   ],
   imports: [
     BrowserModule,
@@ -104,7 +106,8 @@ import {NativeGeocoder} from "@ionic-native/native-geocoder";
     CartPage,
     PaymentsPage,
     AccountPage,
-    BillingPage
+    BillingPage,
+    ChangedataPage
   ],
   providers: [
     StatusBar,

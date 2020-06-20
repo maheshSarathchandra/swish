@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Geolocation} from "@ionic-native/geolocation";
 import {DashboardPage} from "../dashboard/dashboard";
 import {NativeGeocoder, NativeGeocoderOptions, NativeGeocoderReverseResult} from "@ionic-native/native-geocoder";
+import {ChangedataPage} from "../changedata/changedata";
 
 /**
  * Generated class for the LocationPage page.
@@ -57,7 +58,7 @@ export class LocationPage {
       console.log("Error getting location"+JSON.stringify(error));
     });
 
-
+  this.navCtrl.push(ChangedataPage,{data:this.geoAddress});
 
   }
 
@@ -92,6 +93,7 @@ export class LocationPage {
   setYourLocationManually(){
 
 
+    this.navCtrl.push(ChangedataPage);
   }
 
 }

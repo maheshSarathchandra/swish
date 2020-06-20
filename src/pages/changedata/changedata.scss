@@ -1,3 +1,91 @@
 page-changedata {
 
+
+  .location-title{
+
+    position: center;
+    width: 375px;
+    height: 44px;
+    left: 0px;
+    top: 44px;
+
+
+    background: #FFFFFF;
+
+
+    .location-title-data{
+
+      position: absolute;
+      width: 108px;
+      height: 19px;
+      left: calc(50% - 108px/2 - 0.5px);
+      top: 12px;
+
+      font-family: SF Pro Text;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 19px;
+
+
+      text-align: center;
+
+
+
+      color: #000000;
+    }
+
+
+
+
+  }
+
+  .input-ios{
+
+    background: #F7F7F7;
+
+    border-radius: 8px;
+
+    height: 38px;
+
+    top: 100px;
+
+  }
+
+  .location-detect{
+
+
+    height: 49px;
+    top: 63%;
+
+
+
+    background: #EB0C6D;
+    border-radius: 8px;
+
+  }
+
+  .location-detect-data{
+
+    position: absolute;
+    width: 156px;
+    height: 19px;
+    left: calc(50% - 156px/2 - 65.5px);
+    top: calc(50% - 19px/2);
+
+    font-family: SF Pro Text;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+
+
+
+
+
+    color: #FFFFFF;
+
+  }
+
+
 }

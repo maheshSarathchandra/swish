@@ -38,10 +38,13 @@ export class LoginserviceProvider {
     return this.http.post(this.url+"/wp-json/jwt-auth/v1/token",userValue)
       .pipe(tap(
         data =>{
-          localStorage.setItem('wpIonicToken',JSON.stringify(data));
+          localStorage.setItem('wpIonicToken',data['token']);
+
         }
         )
       );
+
+
   }
 
   userCreate(user: any):Observable<any>{
@@ -219,7 +222,7 @@ export class LoginserviceProvider {
 
 
       headers: new HttpHeaders({
-        'Authorization': "Bearer "+ "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvZGVtby5zd2lzaC5iaXpcL3dwIiwiaWF0IjoxNTkyNDcyMzA5LCJuYmYiOjE1OTI0NzIzMDksImV4cCI6MTU5MzA3NzEwOSwiZGF0YSI6eyJ1c2VyIjp7ImlkIjoiMjMifX19.wYCPxjt22geYs0TzrPp_XpzeUbWzuiqojHWeW24fkkc"
+        'Authorization': "Bearer "+ String(localStorage.getItem('wpIonicToken'))
       })
     };
 
@@ -227,8 +230,11 @@ export class LoginserviceProvider {
     return this.http.get(this.url+"/wp-json/wc/v3/customers/"+userId,httpOptions)
       .pipe(tap(data=>{
 
+        localStorage.setItem('customerData',JSON.stringify(data));
 
-          return data;
+        console.log(data);
+
+
         }));
   }
 }

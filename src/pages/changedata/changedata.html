@@ -5,11 +5,22 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <ion-navbar>
-    <ion-title>changedata</ion-title>
-  </ion-navbar>
+
 </ion-header>
 
 <ion-content padding>
+
+  <div class="location-title">
+    <p class="location-title-data">Your Location</p>
+  </div>
+
+  <ion-input class="input-ios" [(ngModel)]="data"></ion-input>
+
+  <button ion-button class="location-detect" block (click)="saveData()">
+    <div class="location-detect-data">
+      <span>Save</span>
+    </div>
+  </button>
+
 
 </ion-content>

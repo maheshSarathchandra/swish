@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {OtpsignupPage} from "../otpsignup/otpsignup";
-import {CompletedataPage} from "../completedata/completedata";
 import {LoginserviceProvider} from "../../providers/loginservice/loginservice";
 
 
@@ -20,6 +19,9 @@ import {LoginserviceProvider} from "../../providers/loginservice/loginservice";
 export class SignupPage {
 
    userData = {firstname:'',lastname:'', phoneNumber:'',email:'',password:'',confirmpassword:''};
+
+
+   userDataValues = { first_name :'',last_name :'',email :'',password:'',phone:''};
 
 
 
@@ -67,18 +69,17 @@ export class SignupPage {
 
       console.log(this.userDto);
 
+      this.loginserviceProvider.userCreateData(this.userDto).then(data=>{
+        console.log(data.status);
+      });
 
-      // this.loginserviceProvider.userCreate(this.userDto).subscribe(data=>{
-      //   console.log(data);
-      // });
 
-
-    this.navCtrl.setRoot(OtpsignupPage, {userData:this.userDto});
+    this.navCtrl.setRoot(OtpsignupPage, {userDataItems:this.userDto});
       }else{
         console.log("data not valid");
       }
 
-      console.log(this.userData);
+
 
     }
 

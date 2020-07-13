@@ -35,6 +35,9 @@ import {AccountPage} from "../pages/account/account";
 import {BillingPage} from "../pages/billing/billing";
 import {NativeGeocoder} from "@ionic-native/native-geocoder";
 import {ChangedataPage} from "../pages/changedata/changedata";
+import { CreatedataProvider } from '../providers/createdata/createdata';
+import {HTTP} from "@ionic-native/http";
+import {IonicStorageModule} from "@ionic/storage";
 
 
 
@@ -79,7 +82,8 @@ import {ChangedataPage} from "../pages/changedata/changedata";
         }
       }
 
-    })
+    }),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -112,10 +116,12 @@ import {ChangedataPage} from "../pages/changedata/changedata";
   providers: [
     StatusBar,
     SplashScreen,
+    HTTP,
     Geolocation,
     NativeGeocoder,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    LoginserviceProvider
+    LoginserviceProvider,
+    CreatedataProvider
   ]
 })
 export class AppModule {}

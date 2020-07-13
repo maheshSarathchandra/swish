@@ -43,7 +43,7 @@
 
     <div  class="product-rating" style="margin-left: 2%" padding-top>
 
-      <rating name="rating" id="rating"  readOnly="true" max="5" emptyStarIconName="star-outline"
+      <rating name="rating" id="rating" [(ngModel)]="pr.average_rating" readOnly="true" max="5" emptyStarIconName="star-outline"
               halfStarIconName="star-half" starIconName="star" nullable="false">
       </rating>
     </div>

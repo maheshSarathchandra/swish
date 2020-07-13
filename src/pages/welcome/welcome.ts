@@ -5,6 +5,7 @@ import {PasswordPage} from "../password/password";
 import {LoginserviceProvider} from "../../providers/loginservice/loginservice";
 
 
+
 /**
  * Generated class for the WelcomePage page.
  *
@@ -21,9 +22,7 @@ export class WelcomePage {
 
   usernameData = {inputData:''};
 
-  consumer_key: string;
 
-  consumer_secret:string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public toastCrtl: ToastController,
               public loginservice: LoginserviceProvider) {
@@ -32,13 +31,7 @@ export class WelcomePage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad WelcomePage');
 
-    this.consumer_key = localStorage.getItem("woocommerce_consumer_key");
-    this.consumer_secret = localStorage.getItem("woocommerce_consumer_secret");
 
-
-
-    console.log(this.consumer_key);
-    console.log(this.consumer_secret);
   }
 
   login(){
@@ -82,7 +75,7 @@ export class WelcomePage {
   signUp(){
 
 
-    this.navCtrl.setRoot(SignupPage);
+    this.navCtrl.push(SignupPage);
 
 
   }
@@ -90,11 +83,15 @@ export class WelcomePage {
 ionViewWillEnter(){
 
 
-  this.loginservice.appInfo().subscribe(data=>{
+  this.loginservice.appInfo().then(data=>{
 
-  console.log(data);
+  console.log("this is working");
 
-  });
+  })
+    .catch(error=>{
+
+      console.log("this is not working");
+    })
 
 
 

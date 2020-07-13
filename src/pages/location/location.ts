@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {Geolocation} from "@ionic-native/geolocation";
-import {DashboardPage} from "../dashboard/dashboard";
 import {NativeGeocoder, NativeGeocoderOptions, NativeGeocoderReverseResult} from "@ionic-native/native-geocoder";
 import {ChangedataPage} from "../changedata/changedata";
 

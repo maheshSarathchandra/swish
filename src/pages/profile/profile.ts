@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {App, IonicPage, NavController, NavParams} from 'ionic-angular';
 import {LoginPage} from "../login/login";
 import {LoginserviceProvider} from "../../providers/loginservice/loginservice";
+import {Storage} from "@ionic/storage";
 
 /**
  * Generated class for the ProfilePage page.
@@ -40,7 +41,8 @@ export class ProfilePage {
 
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public app: App,public loginservice: LoginserviceProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public app: App,public loginservice: LoginserviceProvider,
+              public storage: Storage) {
   }
 
   ionViewDidLoad() {
@@ -51,18 +53,13 @@ export class ProfilePage {
 
   logOutUser(){
 
-    //localStorage.clear();
 
+    this.storage.remove('wpIonicToken').then((data)=>{
 
-
-    localStorage.removeItem('wpIonicToken');
-
-    if(localStorage.getItem('wpIonicToken')){
-
-    }else{
+      console.log(data);
 
       this.app.getRootNav().setRoot(LoginPage);
-    }
+    });
 
 
     console.log("clear data");
@@ -128,23 +125,36 @@ export class ProfilePage {
     }
 
 
-    this.loginservice.customerData('23').subscribe(data=>{
 
-      this.addressLineOne = data['billing']['address_1'];
+    this.storage.get('customerData').then((val)=> {
 
-      this.addressLineTwo = data['billing']['address_2'];
+      console.log("customer data" + val);
 
-      this.city = data['billing']['city'];
+      let id = String(val);
 
-      this.postalCode = data['billing']['postcode'];
 
-      console.log(this.addressLineTwo);
 
-      console.log(this.city);
+      this.loginservice.customerData(id).then(data => {
 
-      console.log(data);
-    })
+        console.log("profile data" + JSON.parse(data.data));
 
+        let userData = JSON.parse(data.data);
+
+        this.addressLineOne = userData['billing']['address_1'];
+
+        this.addressLineTwo = userData['billing']['address_2'];
+
+        this.city = userData['billing']['city'];
+
+        this.postalCode = userData['billing']['postcode'];
+
+        console.log(this.addressLineTwo);
+
+        console.log(this.city);
+
+        console.log(JSON.parse(data.data));
+      });
+    });
   }
 
 

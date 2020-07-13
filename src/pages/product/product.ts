@@ -4,6 +4,7 @@ import {LoginserviceProvider} from "../../providers/loginservice/loginservice";
 import {VenderPage} from "../vender/vender";
 import {CartPage} from "../cart/cart";
 import {ProductdetailsPage} from "../productdetails/productdetails";
+import {Storage} from "@ionic/storage";
 
 /**
  * Generated class for the ProductPage page.
@@ -39,13 +40,21 @@ export class ProductPage {
 
  productDeatailsData = [];
 
+ productItems = [];
+
+ cartDataItems : number = 0;
+
+
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-              public loginservice: LoginserviceProvider) {
+              public loginservice: LoginserviceProvider,public storage: Storage) {
 
     this.productId = navParams.get('data');
 
     console.log(this.productId);
+
+
   }
 
 
@@ -53,24 +62,29 @@ export class ProductPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProductPage');
 
-    this.loginservice.specificProduct(this.productId).subscribe(data=>{
+    this.loginservice.specificProduct(this.productId).then(data=>{
 
-      console.log(data);
+      console.log(JSON.parse(data.data));
 
-      this.nameData = data['name'];
 
-      this.productCount = data['count'];
+      let val = JSON.parse(data.data);
+
+      this.nameData = val['name'];
+
+      this.productCount = val['count'];
 
       console.log(this.nameData);
 
 
     });
 
-    this.loginservice.allproducts().subscribe(dataValue=>{
+    this.loginservice.allproducts(this.productId).then(dataValue=>{
 
-      console.log(dataValue);
+      console.log(JSON.parse(dataValue.data));
 
-      this.productData = dataValue;
+      this.productData = JSON.parse(dataValue.data);
+
+      this.productItems = this.productData;
 
       for(let j of dataValue){
 
@@ -80,8 +94,27 @@ export class ProductPage {
     });
   }
 
+  initializeItems(){
 
-  getItems($event){
+    this.productItems = this.productData
+  }
+
+
+
+  getItems(ev : any){
+
+    this.initializeItems();
+
+    var val = ev.target.value;
+
+    console.log(val);
+
+
+    if (val && val.trim() != "") {
+      this.productItems = this.productItems.filter(data => {
+        return data.name.toLowerCase().indexOf(val.toLowerCase()) > -1;
+      });
+    }
 
   }
 
@@ -99,12 +132,32 @@ export class ProductPage {
   ionViewWillEnter(){
 
 
-
+    console.log(this.cartDataItems);
 
     console.log(this.vendor);
 
+    let cartItems = [];
 
 
+    this.storage.get('oderItems').then((val)=>{
+
+      if(val === null){
+
+        this.cartDataItems = 0;
+
+      }else{
+        this.storage.get('oderItems').then((val)=>{
+
+          cartItems = JSON.parse(val);
+
+          this.cartDataItems = cartItems.length;
+
+        });
+
+
+
+      }
+    });
 
   }
 
@@ -128,9 +181,15 @@ export class ProductPage {
 
   cartItems(data){
 
+    console.log(data);
+
     for(let j of this.productData){
 
+      console.log(j);
+
       if(data=== j.id){
+
+        console.log(j);
 
         this.cartData.push(j);
 
@@ -158,5 +217,10 @@ export class ProductPage {
     }
 
     this.navCtrl.push(ProductdetailsPage,{data:this.productDeatailsData});
+  }
+
+  openCart(){
+
+    this.navCtrl.push(CartPage);
   }
 }

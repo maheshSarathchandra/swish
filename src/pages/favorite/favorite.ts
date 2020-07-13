@@ -4,6 +4,7 @@ import {LoginserviceProvider} from "../../providers/loginservice/loginservice";
 import {VenderPage} from "../vender/vender";
 import {CartPage} from "../cart/cart";
 import {ProductdetailsPage} from "../productdetails/productdetails";
+import {Storage} from "@ionic/storage";
 
 /**
  * Generated class for the FavoritePage page.
@@ -37,14 +38,13 @@ export class FavoritePage {
 
   favoriteItems = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public loginservice: LoginserviceProvider) {
+  cartDataItems : number = 0;
 
-     this.favoriteItems = JSON.parse(localStorage.getItem('favoriteItems'));
+  dataItems = [];
 
-    for(let j of this.favoriteItems){
+  constructor(public navCtrl: NavController, public navParams: NavParams,public loginservice: LoginserviceProvider,public storage: Storage) {
 
-      this.vendor.push(j.store);
-    }
+
   }
 
 
@@ -54,8 +54,23 @@ export class FavoritePage {
 
   }
 
+  initializeItems(){
 
-  getItems($event){
+    this.dataItems = this.favoriteItems;
+  }
+
+
+  getItems(ev : any){
+
+    this.initializeItems();
+
+    var val = ev.target.value;
+
+    if (val && val.trim() != "") {
+      this.dataItems = this.dataItems.filter(data => {
+        return data.name.toLowerCase().indexOf(val.toLowerCase()) > -1;
+      });
+    }
 
   }
 
@@ -72,11 +87,42 @@ export class FavoritePage {
 
   ionViewWillEnter(){
 
+    this.storage.get('favoriteItems').then((val)=>{
+
+      this.favoriteItems = JSON.parse(val);
+
+      console.log(this.favoriteItems);
+
+      for(let j of this.favoriteItems){
+
+        this.vendor.push(j.store);
+      }
+
+      this.dataItems = this.favoriteItems;
+
+      console.log(this.vendor);
+    });
 
 
+    let cartItems = [];
 
-    console.log(this.vendor);
+    this.storage.get('oderItems').then((val)=>{
 
+      if(val===null){
+
+        this.cartDataItems = 0;
+      }else{
+
+        this.storage.get('oderItems').then((val)=>{
+
+          cartItems = JSON.parse(val);
+
+          this.cartDataItems = cartItems.length;
+        });
+
+
+      }
+    });
 
 
 
@@ -134,4 +180,9 @@ export class FavoritePage {
     this.navCtrl.push(ProductdetailsPage,{data:this.productDeatailsData});
   }
 
+
+  openCart(){
+
+    this.navCtrl.push(CartPage);
+  }
 }

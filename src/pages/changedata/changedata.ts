@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {IonicPage, LoadingController, NavController, NavParams} from 'ionic-angular';
+import {LoginserviceProvider} from "../../providers/loginservice/loginservice";
+import {AppearPage} from "../appear/appear";
+import {Storage} from "@ionic/storage";
 
 /**
  * Generated class for the ChangedataPage page.
@@ -17,7 +20,9 @@ export class ChangedataPage {
 
  public data: string;
 
- addressData = {billing:{first_name:'',
+ id : string;
+
+  addressData = {first_name:'',
      last_name:'',
      company:'',
      address_1:'',
@@ -27,9 +32,12 @@ export class ChangedataPage {
      country:'',
      state:'',
      email:'',
-     phone:''}};
+     phone:''};
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+ ccustomerData = new ChangeCustomer();
+
+  constructor(public navCtrl: NavController, public navParams: NavParams,public loginservice : LoginserviceProvider,
+              public loadingCtrl: LoadingController,public storage: Storage) {
 
     this.data = navParams.get('data');
   }
@@ -37,7 +45,16 @@ export class ChangedataPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad ChangedataPage');
 
+    this.storage.get('customerEmailData').then((val)=>{
 
+      this.addressData.email = val;
+    });
+
+    this.storage.get('customerData').then((val)=>{
+
+      this.id = val;
+
+    });
 
   }
 
@@ -45,17 +62,56 @@ export class ChangedataPage {
 
     console.log(this.data);
 
+    let loading = this.loadingCtrl.create({
+      spinner: 'bubbles',
+      content: 'Logging in ...'
+    });
+
+    loading.present();
+
     let dataItems = this.data.split(',');
 
 
-    this.addressData.billing.address_1 = dataItems[0];
+    this.addressData.address_1 = dataItems[0];
 
-    this.addressData.billing.address_2 = dataItems[1];
+    this.addressData.address_2 = dataItems[1];
 
-    this.addressData.billing.city = dataItems[2];
+    this.addressData.city = dataItems[2];
+
 
     console.log("this save data");
+
+    this.ccustomerData.address_1 = this.addressData.address_1;
+
+    this.ccustomerData.address_2 = this.addressData.address_2;
+
+    this.ccustomerData.city = this.addressData.city;
+
+    this.ccustomerData.email = this.addressData.email;
+
+    this.loginservice.changeCustomer(this.ccustomerData,this.id).then(data=>{
+
+      loading.dismiss().then(()=>{
+
+        if(data.status===200){
+
+          this.navCtrl.setRoot(AppearPage);
+        }
+
+
+      });
+
+    });
   }
 
+
+}
+
+export class ChangeCustomer {
+
+  address_1: string;
+  address_2: string;
+  city: string;
+  email: string;
 
 }

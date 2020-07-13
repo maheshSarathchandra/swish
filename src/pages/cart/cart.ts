@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {LoginserviceProvider} from "../../providers/loginservice/loginservice";
+import {DashboardPage} from "../dashboard/dashboard";
+import {Storage} from "@ionic/storage";
 
 /**
  * Generated class for the CartPage page.
@@ -36,36 +38,42 @@ export class CartPage {
   cartGetItems = [];
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public loginservice: LoginserviceProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public loginservice: LoginserviceProvider,public storage: Storage) {
 
 
 
 
-    this.cartItems = JSON.parse(localStorage.getItem('oderItems'));
+     this.storage.get('oderItems').then((val)=>{
 
-    for(let j of this.cartItems){
-
-   let   specificData = {id:'',numberOfData:'',name:'',vendor:'',price:''};
-
-      console.log(j);
+       this.cartItems = JSON.parse(val);
 
 
-      specificData.id = j.id;
+       for(let j of this.cartItems){
 
-      specificData.numberOfData = String(this.data);
+         let   specificData = {id:'',numberOfData:'',name:'',vendor:'',price:''};
 
-      specificData.name = j.name;
-
-     specificData.vendor = j.store.vendor_display_name;
-
-     specificData.price = j.price;
-
-      this.specificItem.push(specificData);
+         console.log(j);
 
 
-      console.log(this.specificItem);
+         specificData.id = j.id;
 
-    }
+         specificData.numberOfData = String(this.data);
+
+         specificData.name = j.name;
+
+         specificData.vendor = j.store.vendor_display_name;
+
+         specificData.price = j.price;
+
+         this.specificItem.push(specificData);
+
+
+         console.log(this.specificItem);
+
+       }
+    });
+
+
 
 
   }
@@ -75,13 +83,41 @@ export class CartPage {
   }
 
 
-  reduceNumber(){
+  reduceNumber(dataNumber){
 
     console.log("reduce number");
 
-    if(this.data>1){
 
-      this.data = this.data - 1;
+    for(let j of this.cartItems){
+
+      if(dataNumber.id=== j.id){
+
+        console.log(this.totalPrice);
+
+        console.log(j.price);
+
+
+
+
+
+        this.totalPrice = this.totalPrice- parseFloat(j.price);
+
+        break;
+      }
+
+
+
+    }
+
+    for(let j of this.specificItem){
+
+      if(dataNumber.id=== j.id){
+
+        this.data = parseInt(j.numberOfData) - 1;
+
+
+        j.numberOfData = String(this.data);
+      }
     }
 
 
@@ -155,6 +191,13 @@ export class CartPage {
   this.loginservice.removeCartItems(productData);
 
     console.log("data");
+
+  }
+
+  dashboardPageData(){
+
+
+    this.navCtrl.setRoot(DashboardPage);
 
   }
 

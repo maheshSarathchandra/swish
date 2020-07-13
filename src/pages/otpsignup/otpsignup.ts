@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {IonicPage, NavController, NavParams, ToastController} from 'ionic-angular';
 import {CompletedataPage} from "../completedata/completedata";
-import {Dto, SignupPage} from "../signup/signup";
+import {Dto} from "../signup/signup";
 
 
 
@@ -32,7 +32,7 @@ export class OtpsignupPage {
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public toastController : ToastController) {
 
-   this.signUpUserData = navParams.get("userData");
+   this.signUpUserData = navParams.get("userDataItems");
 
 console.log(this.signUpUserData);
 

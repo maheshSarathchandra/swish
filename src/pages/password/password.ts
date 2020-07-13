@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import {IonicPage, LoadingController, NavController, NavParams} from 'ionic-angular';
 import {LoginserviceProvider} from "../../providers/loginservice/loginservice";
-import {finalize} from "rxjs/operators";
 import {AppearPage} from "../appear/appear";
 
 
@@ -20,6 +19,8 @@ import {AppearPage} from "../appear/appear";
 export class PasswordPage {
 
   passwordData = {password:'',username : ''};
+
+  userDto = new User();
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public loginservice: LoginserviceProvider,
               public loadingCtrl: LoadingController) {
@@ -42,7 +43,10 @@ export class PasswordPage {
 
     }else {
 
-      console.log(this.passwordData);
+      this.userDto.password = this.passwordData.password;
+      this.userDto.username = this.passwordData.username;
+
+      console.log(this.userDto);
 
       let loading = this.loadingCtrl.create({
         spinner: 'bubbles',
@@ -51,22 +55,29 @@ export class PasswordPage {
 
       loading.present();
 
-      this.loginservice.userLogin(this.passwordData)
-        .pipe(finalize(() => loading.dismissAll()))
-        .subscribe(
-          data => {
-            console.log(data);
+      this.loginservice.usersLogin(this.userDto).then(data=> {
+        console.log(data.data);
 
-            if (data) {
+        loading.dismiss().then(() => {
 
-              this.navCtrl.setRoot(AppearPage);
-            }
+          if(data.status===200) {
+
+            this.navCtrl.setRoot(AppearPage);
+
           }
-        );
+
+        });
+      });
 
     }
 
   }
 
 
+}
+
+export class User{
+
+  password: string;
+  username: string;
 }

@@ -13,8 +13,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import {AppearPage} from "../pages/appear/appear";
 
 
-import {LocationPage} from "../pages/location/location";
+
 import {LoginPage} from "../pages/login/login";
+import {Storage} from "@ionic/storage";
 
 
 
@@ -24,7 +25,8 @@ import {LoginPage} from "../pages/login/login";
 })
 export class MyApp {
   rootPage:any = null;
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
+  authData: any = null;
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,storage: Storage) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -32,7 +34,12 @@ export class MyApp {
       splashScreen.hide();
     });
 
-    if(localStorage.getItem('wpIonicToken')){
+    storage.get('wpIonicToken').then((val)=>{
+
+      this.authData = val;
+    });
+
+    if(this.authData !== null){
 
       this.rootPage = AppearPage;
     }else{

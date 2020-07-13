@@ -76,7 +76,7 @@
             <ion-col col-6 no-padding>
 
               <div  class="count" >
-                  <span class="item-count" (click)="reduceNumber()">
+                  <span class="item-count" (click)="reduceNumber(images)">
                       -
                     </span>
                 <span class="item-count show-count">
@@ -108,15 +108,15 @@
     </ion-item>
 
     <div class="more-data" padding-bottom>
-      <button ion-button block style="-webkit-border-radius: 21px;-moz-border-radius: 21px;border-radius: 21px;" color="buttoncolordata">
+      <button ion-button block style="-webkit-border-radius: 21px;-moz-border-radius: 21px;border-radius: 21px;" color="buttoncolordata" (click)="dashboardPageData()">
         Add more items
       </button>
     </div>
 
   </ion-list>
 
-  <div >
-    <ion-row>
+  <div>
+    <ion-row >
       <ion-col col-8>
 
         <p>Total</p>
@@ -134,11 +134,12 @@
 
       <ion-col>
 
-        <button ion-button block color="buttoncolor" style="-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;">data</button>
+        <button ion-button block color="buttoncolor" style="-webkit-border-radius: 8px;-moz-border-radius: 8px;border-radius: 8px;">checkout</button>
       </ion-col>
     </ion-row>
 
   </div>
+
 
 
 </ion-content>
